@@ -1,0 +1,16 @@
+{
+  "name": "mlapp",
+  "version": "1.0.0",
+  "description": "mlintegrated express app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akash Rawat",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.6",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0"
+  }
+}
