@@ -53,4 +53,4 @@ app.post('/upload', async(req, res) => {
 });
 
 // console.log(process.env.PORT);
-app.listen(process.env.PORT || 8000);
+app.listen(process.env.PORT);
