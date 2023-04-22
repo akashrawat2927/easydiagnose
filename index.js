@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const fileUpload = require('express-fileupload');
-const port = process.env.PORT || 8080;
+const port =  80;
 
 
 
