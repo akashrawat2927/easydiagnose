@@ -4,7 +4,7 @@
   "description": "mlintegrated express app",
   "main": "index.js",
   "scripts": {
-    
+    "start": "nodemon index.js"
   },
   "author": "Akash Rawat",
   "license": "ISC",
