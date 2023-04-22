@@ -1,20 +1,26 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-
-
-
 const fileUpload = require('express-fileupload');
 
 
+
+app.set('view engine', 'ejs');
+app.set('views','./views');
+
+
+app.use(express.urlencoded());
+app.use(express.static('assets')); 
 app.use(fileUpload());
 
-// Add this line to serve our index.html page
-app.use(express.static('public'));
 
-// app.get('/', (req, res) => {
-//     res.send('Hello World!');
-// });
+
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
+
+
 
 app.post('/upload', async(req, res) => {
     // Get the file that was set to our field named "image"
@@ -29,7 +35,7 @@ app.post('/upload', async(req, res) => {
     image.mv(__dirname + '/upload/' + image.name);
 
     const fs = require('fs');
-    const imageBuffer = fs.readFileSync('image');
+    const imageBuffer = fs.readFileSync('./upload/01.jpeg');
 
     const response = await  axios.post('http://localhost:5000/predict', imageBuffer, {
         headers: {
