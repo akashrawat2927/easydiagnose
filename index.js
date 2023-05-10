@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const fileUpload = require('express-fileupload');
-const port =  8000;
+const port =  process.env.PORT || 8080;
 
 
 
@@ -33,18 +33,25 @@ app.post('/upload', async(req, res) => {
 
   
     // // Move the uploaded image to our upload folder
-    image.mv(__dirname + '/upload/' + image.name);
-
+  
+    
+    await image.mv('./upload/' + image.name);
+ 
     const fs = require('fs');
-    const imageBuffer = fs.readFileSync('./upload/01.jpeg');
+    
+    
+    const imageBuffer = await fs.readFileSync('./upload/' + image.name);
 
-    const response = await  axios.post('http://localhost:5000/predict', imageBuffer, {
+    const response = await  axios.post('https://flasktester-c7gr.onrender.com/predict', imageBuffer, {
         headers: {
           'Content-Type': 'image/jpeg'
         }
       })
+
+
+      
      
-      console.log(response);
+    //   console.log(response);
       res.send(response.data);
 
 
